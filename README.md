@@ -109,7 +109,7 @@ Validation and test sets are **not augmented**.
 | Loss | CrossEntropyLoss (label smoothing 0.05) |
 | LR scheduler | ReduceLROnPlateau (factor=0.5, patience=3) |
 | Gradient clipping | 1.0 |
-| Epochs | 40 |
+| Epochs | 30 |
 | CNN frozen for | first 10 epochs |
 
 ---
@@ -117,8 +117,6 @@ Validation and test sets are **not augmented**.
 ## Results
 
 ### Test Accuracy: **60.3%** (speaker-independent)
-
-> This result is competitive with the published baseline of 59% by Gutierrez & Robert (2017) on the same dataset and evaluation protocol.
 
 ### Confusion Matrix
 
