@@ -1,0 +1,8 @@
+torch
+torchvision
+mediapipe==0.10.21
+opencv-python
+tqdm
+matplotlib
+seaborn
+scikit-learn
