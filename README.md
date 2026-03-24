@@ -154,7 +154,6 @@ cd Lip-Reading
 pip install torch torchvision mediapipe==0.10.21 opencv-python tqdm matplotlib seaborn scikit-learn
 
 # Run preprocessing first, then training
-# Open notebooks in Jupyter or Kaggle
 ```
 
 > ⚠️ Preprocessing requires **Python 3.10** and **MediaPipe 0.10.21** specifically.  
