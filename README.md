@@ -6,12 +6,11 @@ End-to-end isolated-word lip reading on the **MIRACL-VC1** dataset using a **Res
 
 ## Repository Structure
 
-```
 Lip-Reading/
 ├── RGB_dataset_preprocessing_(mouth_crop).ipynb   # Mouth crop extraction pipeline
 ├── lip-reading-resnet18-gru.ipynb                 # Model training & evaluation
-└── README.md
-```
+├── requirements.txt                               # Project dependencies for reproducibility
+└── README.md                                      # Documentation & analysis
 
 ---
 
@@ -161,15 +160,10 @@ The fact that **Validation** and **Test** accuracies are nearly identical confir
 
 ---
 
-## Setup
-
+## 🛠️ Quick Start
+Install dependencies to run the notebooks:
 ```bash
-# Clone the repository
-git clone https://github.com/<your-username>/Lip-Reading.git
-cd Lip-Reading
-
-# Install dependencies
-pip install torch torchvision mediapipe==0.10.21 opencv-python tqdm matplotlib seaborn scikit-learn
+pip install -r requirements.txt
 ```
 
 > ⚠️ Preprocessing requires **Python 3.10** and **MediaPipe 0.10.21** specifically.  
