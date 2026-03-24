@@ -1,6 +1,6 @@
 # Lip-Reading
 
-End-to-end isolated-word lip reading on the **MIRACL-VC1** dataset using a **ResNet18 + Bidirectional GRU** architecture. The model is trained on RGB mouth-crop sequences and evaluated under a **speaker-independent** protocol, achieving **60.3% test accuracy** across 10 word classes.
+End-to-end isolated-word lip reading on the **MIRACL-VC1** dataset using a **ResNet18 + Bidirectional GRU** architecture. The model is trained on RGB mouth-crop sequences and evaluated under a **speaker-independent** protocol, achieving **60.0% test accuracy** across 10 word classes.
 
 ---
 
@@ -65,6 +65,7 @@ Raw video frames are processed to isolate the mouth region, discarding irrelevan
 **Requirements:**
 - Python 3.10.x
 - MediaPipe 0.10.21 (newer versions are incompatible)
+
 ---
 
 ## Model Architecture
@@ -73,8 +74,7 @@ Raw video frames are processed to isolate the mouth region, discarding irrelevan
 
 The model follows a **CNN-RNN hybrid** design: a convolutional backbone extracts spatial features from each frame independently, and a recurrent module models temporal dependencies across the sequence.
 
-<img width="2466" height="1728" alt="Gemini_Generated_Image_okadydokadydokad" src="https://github.com/user-attachments/assets/f2edcb47-1ee2-44da-b4ba-19cfb66d066b" />
-
+<img width="2466" height="1728" alt="Architecture diagram" src="https://github.com/user-attachments/assets/f2edcb47-1ee2-44da-b4ba-19cfb66d066b" />
 
 ### Key Design Choices
 
@@ -116,28 +116,36 @@ Validation and test sets are **not augmented**.
 
 ## Results
 
-### Test Accuracy: **60.3%** (speaker-independent)
+### Test Accuracy: **60.0%** (speaker-independent)
+
+> Competitive with the published baseline of 59% by Gutierrez & Robert (2017) on the same dataset and evaluation protocol.
 
 ### Confusion Matrix
 
-> 💡 *Place your confusion matrix figure here*
+*Row-normalized confusion matrix on the test set. Diagonal values represent per-class recall.*
 
-**Per-class analysis:**
+<!-- Upload your confusion matrix image and replace this comment with the img tag -->
 
-| Word | Recall | Notes |
-|------|--------|-------|
-| Hello | ~93% | Distinctive lip extension, easy for RGB |
-| Start | ~80% | Strong visual signature |
-| Well | ~77% | Clear tongue/lip movement |
-| Connection | ~73% | Recognizable articulation |
-| Navigation | ~33% | Visually ambiguous, short duration |
-| Begin | ~33% | Confused with Next — viseme overlap |
+### Per-class Performance
 
-The confusion pattern is not random — it concentrates on **visually similar word pairs** (e.g. Begin↔Next, Navigation↔Previous). This is a known challenge in lip reading caused by **viseme ambiguity**: different words that produce nearly identical mouth shapes. Words with distinctive 3D lip geometry (Hello, Start, Well) are recognized reliably, while words with subtle or similar articulation remain hard to distinguish from RGB alone.
+| Word       | Precision | Recall | F1-score |
+|------------|-----------|--------|----------|
+| Hello      | 0.93      | 0.93   | 0.93     |
+| Connection | 0.91      | 0.67   | 0.77     |
+| Start      | 0.74      | 0.77   | 0.75     |
+| Stop       | 0.88      | 0.50   | 0.64     |
+| Choose     | 0.76      | 0.63   | 0.69     |
+| Well       | 0.49      | 0.63   | 0.55     |
+| Next       | 0.46      | 0.63   | 0.54     |
+| Previous   | 0.46      | 0.43   | 0.45     |
+| Begin      | 0.41      | 0.30   | 0.35     |
+| Navigation | 0.33      | 0.50   | 0.40     |
+
+The confusion pattern is not random — it concentrates on **visually similar word pairs** (Begin↔Next, Navigation↔Previous). This is a known challenge in lip reading caused by **viseme ambiguity**: different words that produce nearly identical mouth shapes. Words with distinctive lip geometry (Hello, Start, Connection) are recognized reliably, while words with subtle or similar articulation remain harder to distinguish from RGB alone.
 
 ### Generalization Gap
 
-A significant gap exists between training (~99%) and test (~60%) accuracy, which is expected and characteristic of **speaker-independent evaluation on small datasets**. The model has sufficient capacity to memorize the 10 training speakers but must generalize to entirely unseen identities at test time. The close match between validation (61%) and test (60.3%) accuracy confirms the model generalizes consistently to new speakers — it is not overfitting to the validation set.
+A significant gap exists between training (~99%) and test (60%) accuracy, which is expected and characteristic of **speaker-independent evaluation on small datasets**. The model has sufficient capacity to memorize the 10 training speakers but must generalize to entirely unseen identities at test time. The close match between validation and test accuracy confirms the model generalizes consistently to new speakers without overfitting to the validation set.
 
 ---
 
@@ -150,9 +158,17 @@ cd Lip-Reading
 
 # Install dependencies
 pip install torch torchvision mediapipe==0.10.21 opencv-python tqdm matplotlib seaborn scikit-learn
-
-# Run preprocessing first, then training
 ```
 
 > ⚠️ Preprocessing requires **Python 3.10** and **MediaPipe 0.10.21** specifically.  
 > Training was run on Kaggle with a GPU accelerator.
+
+---
+
+## References
+
+- Rekik et al. (2016) — *MIRACL-VC1 dataset*
+- Gutierrez & Robert (2017) — *Lip reading word classification*, 59% speaker-independent baseline on MIRACL-VC1
+- He et al. (2016) — *Deep Residual Learning for Image Recognition* (ResNet18)
+- Cho et al. (2014) — *Learning phrase representations using RNN encoder-decoder* (GRU)
+- Lugaresi et al. (2019) — *MediaPipe: A framework for building perception pipelines*
