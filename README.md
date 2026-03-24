@@ -73,26 +73,8 @@ Raw video frames are processed to isolate the mouth region, discarding irrelevan
 
 The model follows a **CNN-RNN hybrid** design: a convolutional backbone extracts spatial features from each frame independently, and a recurrent module models temporal dependencies across the sequence.
 
-```
-Input: (B, T=22, 3, 64, 64)
-        │
-        ▼
-  ResNet18 (per-frame)        ← ImageNet pretrained, FC layer removed
-  Feature: (B, T, 512)
-        │
-        ▼
-  Feature Dropout (p=0.5)
-        │
-        ▼
-  Bidirectional GRU           ← hidden_size=128, 1 layer
-  Output: (B, 256)            ← concat of forward + backward last hidden states
-        │
-        ▼
-  Dropout (p=0.5)
-        │
-        ▼
-  Linear Classifier → 10 classes
-```
+<img width="2466" height="1728" alt="Gemini_Generated_Image_okadydokadydokad" src="https://github.com/user-attachments/assets/f2edcb47-1ee2-44da-b4ba-19cfb66d066b" />
+
 
 ### Key Design Choices
 
