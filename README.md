@@ -10,11 +10,13 @@ End-to-end isolated-word lip reading on the **MIRACL-VC1** dataset using a **Res
 
 ## Repository Structure
 
+```text
 Lip-Reading/
 ├── RGB_dataset_preprocessing_(mouth_crop).ipynb   # Mouth crop extraction pipeline
 ├── lip-reading-resnet18-gru.ipynb                 # Model training & evaluation
 ├── requirements.txt                               # Project dependencies for reproducibility
 └── README.md                                      # Documentation & analysis
+```
 
 ## Dataset
 
