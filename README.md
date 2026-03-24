@@ -16,8 +16,6 @@ Lip-Reading/
 ├── requirements.txt                               # Project dependencies for reproducibility
 └── README.md                                      # Documentation & analysis
 
----
-
 ## Dataset
 
 All experiments use the [MIRACL-VC1](https://sites.google.com/site/achrafbenhamadou/-datasets/miracl-vc1) dataset, an RGB-D audiovisual database featuring 15 subjects (5 male, 10 female) repeating a fixed vocabulary of **10 isolated words**:
