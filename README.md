@@ -118,13 +118,11 @@ Validation and test sets are **not augmented**.
 
 ### Test Accuracy: **60.0%** (speaker-independent)
 
-> Competitive with the published baseline of 59% by Gutierrez & Robert (2017) on the same dataset and evaluation protocol.
-
 ### Confusion Matrix
 
 *Row-normalized confusion matrix on the test set. Diagonal values represent per-class recall.*
 
-<!-- Upload your confusion matrix image and replace this comment with the img tag -->
+<img width="835" height="690" alt="conf_matrix" src="https://github.com/user-attachments/assets/3936ce66-30e2-4b49-8a5a-7b55c627eadc" />
 
 ### Per-class Performance
 
@@ -164,11 +162,3 @@ pip install torch torchvision mediapipe==0.10.21 opencv-python tqdm matplotlib s
 > Training was run on Kaggle with a GPU accelerator.
 
 ---
-
-## References
-
-- Rekik et al. (2016) — *MIRACL-VC1 dataset*
-- Gutierrez & Robert (2017) — *Lip reading word classification*, 59% speaker-independent baseline on MIRACL-VC1
-- He et al. (2016) — *Deep Residual Learning for Image Recognition* (ResNet18)
-- Cho et al. (2014) — *Learning phrase representations using RNN encoder-decoder* (GRU)
-- Lugaresi et al. (2019) — *MediaPipe: A framework for building perception pipelines*
