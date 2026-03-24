@@ -58,12 +58,13 @@ Raw video frames are processed to isolate the mouth region, discarding irrelevan
 3. **Resizing** — All crops are resized to a fixed resolution of **64 × 64 pixels**
 4. **Temporal Padding** — Sequences are zero-padded to a fixed length of **T = 22 frames** to handle variable-duration samples
 
-> 💡 *Place preprocessing figures here — e.g. the temporal padding figure and the RGB crop examples from the paper*
+*Example of a preprocessed sequence: 7 real mouth-crop frames (t=0–6) zero-padded with black frames to reach the fixed length of T=22.*
+
+<img width="1300" height="870" alt="Temporal padding example" src="https://github.com/user-attachments/assets/4038bc0c-e8f0-4d46-b977-6adcab4ce4ec" />
 
 **Requirements:**
 - Python 3.10.x
 - MediaPipe 0.10.21 (newer versions are incompatible)
-
 ---
 
 ## Model Architecture
