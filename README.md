@@ -8,8 +8,8 @@ End-to-end isolated-word lip reading on the **MIRACL-VC1** dataset using a **Res
 
 ```
 Lip-Reading/
-├── RGB_dataset_preprocessing__mouth_crop_.ipynb   # Mouth crop extraction pipeline
-├── lip_reading_resnet18_gru.ipynb                 # Model training & evaluation
+├── RGB_dataset_preprocessing_(mouth_crop).ipynb   # Mouth crop extraction pipeline
+├── lip-reading-resnet18-gru.ipynb                 # Model training & evaluation
 └── README.md
 ```
 
@@ -48,7 +48,7 @@ To evaluate generalization to **unseen identities**, speakers are partitioned in
 
 ## Preprocessing
 
-> Notebook: `RGB_dataset_preprocessing__mouth_crop_.ipynb`
+> Notebook: `RGB_dataset_preprocessing_(mouth_crop).ipynb`
 
 Raw video frames are processed to isolate the mouth region, discarding irrelevant facial and background information.
 
@@ -70,7 +70,7 @@ Raw video frames are processed to isolate the mouth region, discarding irrelevan
 
 ## Model Architecture
 
-> Notebook: `lip_reading_resnet18_gru.ipynb`
+> Notebook: `lip-reading-resnet18-gru.ipynb`
 
 The model follows a **CNN-RNN hybrid** design: a convolutional backbone extracts spatial features from each frame independently, and a recurrent module models temporal dependencies across the sequence.
 
@@ -126,18 +126,18 @@ Validation and test sets are **not augmented**.
 
 ### Per-class Performance
 
-| Word       | Precision | Recall | F1-score |
-|------------|-----------|--------|----------|
-| Hello      | 0.93      | 0.93   | 0.93     |
-| Connection | 0.91      | 0.67   | 0.77     |
-| Start      | 0.74      | 0.77   | 0.75     |
-| Stop       | 0.88      | 0.50   | 0.64     |
-| Choose     | 0.76      | 0.63   | 0.69     |
-| Well       | 0.49      | 0.63   | 0.55     |
-| Next       | 0.46      | 0.63   | 0.54     |
-| Previous   | 0.46      | 0.43   | 0.45     |
-| Begin      | 0.41      | 0.30   | 0.35     |
-| Navigation | 0.33      | 0.50   | 0.40     |
+| Word       | Recall |
+|:-----------|:-------|
+| Hello      | 0.93   |
+| Start      | 0.77   |
+| Connection | 0.67   |
+| Choose     | 0.63   |
+| Next       | 0.63   |
+| Well       | 0.63   |
+| Navigation | 0.50   |
+| Stop       | 0.50   |
+| Previous   | 0.43   |
+| Begin      | 0.30   |
 
 The confusion pattern is not random — it concentrates on **visually similar word pairs** (Begin↔Next, Navigation↔Previous). This is a known challenge in lip reading caused by **viseme ambiguity**: different words that produce nearly identical mouth shapes. Words with distinctive lip geometry (Hello, Start, Connection) are recognized reliably, while words with subtle or similar articulation remain harder to distinguish from RGB alone.
 
