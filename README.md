@@ -1,6 +1,5 @@
 # Lip-Reading
 
----
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
 ![OpenCV](https://img.shields.io/badge/opencv-%23white.svg?style=for-the-badge&logo=opencv&logoColor=white)
@@ -8,8 +7,6 @@
 ![Kaggle](https://img.shields.io/badge/Kaggle-20BEFF?style=for-the-badge&logo=Kaggle&logoColor=white)
 
 End-to-end isolated-word lip reading on the **MIRACL-VC1** dataset using a **ResNet18 + Bidirectional GRU** architecture. The model is trained on RGB mouth-crop sequences and evaluated under a **speaker-independent** protocol, achieving **60.0% test accuracy** across 10 word classes.
-
----
 
 ## Repository Structure
 
